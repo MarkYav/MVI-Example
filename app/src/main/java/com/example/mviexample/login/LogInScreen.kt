@@ -14,9 +14,9 @@ import kotlinx.coroutines.flow.collect
 
 @Composable
 fun LogInScreen(
-    viewModel: LogInViewModel = LogInViewModel()
+    viewModel: LogInViewModel = LogInViewModel(TODO("use DI for providing deps"))
 ) {
-    val state by viewModel.state
+    val state = viewModel.state
     val context = LocalContext.current
 
     Scaffold(
@@ -40,7 +40,7 @@ fun LogInScreen(
     }
 
     LaunchedEffect(Unit) {
-        viewModel.events.collect { event ->
+        viewModel.eventsFlow.collect { event ->
             when (event) {
                 is LogInEvent.ShowToast -> {
                     Toast.makeText(context, event.message, Toast.LENGTH_LONG).show()
