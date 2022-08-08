@@ -7,6 +7,9 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 
+/**
+ * `Store` is a wrapper around [ViewModel] that has a [state] and [eventsFlow] inside.
+ */
 abstract class Store<S: State>(
     initialState: S
 ) : ViewModel() {

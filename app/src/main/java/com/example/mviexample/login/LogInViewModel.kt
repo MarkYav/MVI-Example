@@ -51,7 +51,7 @@ class LogInViewModel(
         state =
             if (actor.isApplicable(state)) {
                 with(actor) {
-                    internalAction.perform(state, this@LogInViewModel::reduce, /*this@LogInViewModel.events::send*/) {
+                    internalAction.perform(state, this@LogInViewModel::reduce) {
                         viewModelScope.launch { events.send(it) }
                     }
                 }
